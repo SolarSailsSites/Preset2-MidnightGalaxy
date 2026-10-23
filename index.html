@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Preset 2 - Midnight Galaxy</title>
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- 256x144 Downscaled Hardware Engine Canvas -->
+    <canvas id="galaxyCanvas" title="Click anywhere to hide/show bio card"></canvas>
+
+    <!-- Interactive Bio Card Overlay -->
+    <div class="viewport-overlay" id="overlay">
+        <div class="profile-card">
+
+            <!-- ========================================================================= -->
+            <!-- ✏️ CLIENT CUSTOMIZATION: HEADER & AVATAR                                   -->
+            <!-- ========================================================================= -->
+            <div class="card-header">
+                <div class="avatar-frame">
+                    <!-- CHANGE AVATAR IMAGE URL HERE -->
+                    <img src="https://i.pinimg.com/474x/1d/d1/1c/1dd11c2b0509c075425569d2a5b63ea2.jpg" alt="Avatar">
+                    <div class="online-status"></div>
+                </div>
+                <!-- CHANGE DISPLAY NAME HERE -->
+                <div class="username">Username-Here</div>
+                <!-- CHANGE TAGLINE / STATUS HERE -->
+                <div class="tagline">Status-Here</div>
+            </div>
+
+            <div class="card-scroll-body">
+
+                <!-- ========================================================================= -->
+                <!-- ✏️ CLIENT CUSTOMIZATION: ABOUT SECTION                                    -->
+                <!-- ========================================================================= -->
+                <div>
+                    <div class="section-title">About Me</div>
+                    <!-- CHANGE BIO DESCRIPTION HERE -->
+                    <div class="bio-text">
+                        Bio here.
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- ✏️ CLIENT CUSTOMIZATION: LINKS & SOCIALS                                  -->
+                <!-- ========================================================================= -->
+                <div>
+                    <div class="section-title">Links & Socials - you can put as many as you want</div>
+                    <div class="links-container">
+                        <!-- LINK 1 -->
+                        <a href="#" class="bio-link" target="_blank">
+                            <span>⛓️ Link 1</span>
+                            <span>→</span>
+                        </a>
+                        <!-- LINK 2 -->
+                        <a href="#" class="bio-link" target="_blank">
+                            <span>⛓️ Link 2</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ========================================================================= -->
+                <!-- ✏️ CLIENT CUSTOMIZATION: ADDITIONAL INFO                                  -->
+                <!-- ========================================================================= -->
+                <div>
+                    <div class="section-title">Additional Info</div>
+                    <!-- CHANGE TECH BADGES / LIST HERE -->
+                    <div class="bio-text" style="font-family: monospace; font-size: 0.8rem; color: #ffffff;">
+                        Additional Info here.
+                    </div>
+
+                    <div class="card-scroll-body">
+                        <!-- (Your scrollable content goes here...) -->
+                    </div>
+
+                    <!-- COPYRIGHT FOOTER -->
+                    <div class="card-footer">
+                        © <span id="current-year"></span> SolarSailsSites. All Rights Reserved.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Hint -->
+        <div class="toggle-hint" id="hint">Click background to toggle view focus</div>
+
+        <!-- External Script File -->
+        <script src="script.js"></script>
+</body>
+
+</html>

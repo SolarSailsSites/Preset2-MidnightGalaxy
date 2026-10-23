@@ -1,0 +1,255 @@
+/* 1. RESET GLOBAL FRAMEWORK & STRIP UNWANTED MARGINS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #030206;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    position: relative;
+    user-select: none;
+}
+
+
+/* 2. AUTOMATED BOX CONSTRAINTS: FIXED CANVAS ENGINE */
+
+canvas {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 256 / 144;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    z-index: 1;
+    cursor: pointer;
+}
+
+
+/* 3. INTERACTIVE OVERLAY WRAPPER */
+
+.viewport-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    pointer-events: none;
+    /* Allows clicking canvas through container */
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.viewport-overlay.hidden {
+    opacity: 0;
+    transform: scale(0.96);
+    pointer-events: none !important;
+}
+
+
+/* 4. DISCORD-STYLE GLASSMORPHIC BIO CARD */
+
+.profile-card {
+    background: rgba(12, 10, 20, 0.45);
+    width: 100%;
+    max-width: 460px;
+    height: 82vh;
+    max-height: 640px;
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    pointer-events: auto;
+    /* Re-enable clicking inside the card */
+    position: relative;
+}
+
+
+/* CARD HEADER */
+
+.card-header {
+    padding: 28px 24px 16px 24px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+}
+
+.avatar-frame {
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    margin: 0 auto 12px auto;
+    background: #5865F2;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.avatar-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.online-status {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 16px;
+    height: 16px;
+    background: #23a55a;
+    border: 3px solid #0c0a14;
+    border-radius: 50%;
+}
+
+.username {
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.tagline {
+    color: #87ceeb;
+    font-size: 0.85rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+
+
+/* INNER SCROLLABLE CONTENT BODY */
+
+.card-scroll-body {
+    padding: 20px 24px;
+    overflow-y: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* Custom Translucent Scrollbar */
+
+.card-scroll-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.card-scroll-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.card-scroll-body::-webkit-scrollbar-thumb {
+    background: rgba(135, 206, 235, 0.3);
+    border-radius: 10px;
+}
+
+.card-scroll-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(135, 206, 235, 0.6);
+}
+
+.section-title {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.bio-text {
+    color: #d1d5db;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+
+/* BUTTON LINK STACK */
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bio-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+}
+
+.bio-link:hover {
+    background: rgba(88, 101, 242, 0.8);
+    transform: translateY(-2px);
+    border-color: #5865F2;
+    box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+}
+
+
+/* TOGGLE HINT BADGE */
+
+.toggle-hint {
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    font-family: monospace;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    z-index: 3;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.toggle-hint.hidden {
+    opacity: 0;
+}
+
+
+/* CARD FOOTER */
+
+.card-footer {
+    padding: 12px 24px 16px 24px;
+    text-align: center;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    /* Muted gray */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+}
