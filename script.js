@@ -265,7 +265,8 @@ function renderFrame() {
         }
     }
 
-    const mainVortexAngle = time * 0.45;
+    // Reversed Vortex Rotation Angle (-time)
+    const mainVortexAngle = -time * 0.45;
 
     // Render Sky + Flat Mountains + Wavy Ocean Mirror Reflections
     for (let y = 0; y < V_HEIGHT; y++) {
